@@ -39,7 +39,7 @@ public class JavaMyAdmin {
         String[] header = sgbd.getDatabases().get(0).getTables().get(0).getHeaderAsArray();
         String[][] data = sgbd.getDatabases().get(0).getTables().get(0).getRowsAsArray();
         
-        System.out.println("Connected on database" + sgbd.getDatabases().get(0).getName());
+        System.out.println("Connected on database " + sgbd.getDatabases().get(0).getName());
         System.out.println("Table: " + sgbd.getDatabases().get(0).getTables().get(0).getName());
         
         ASCIITable.getInstance().printTable(header, data);
