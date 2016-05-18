@@ -46,7 +46,7 @@ public class SGBD {
     /**
      * Starts the SGBD service
      */
-    public void startService(){
+    public void startService() {
         
         //TODO: Quebrar em vários métodos a parte de obtenção dos dados do banco.
         try {
@@ -65,7 +65,7 @@ public class SGBD {
                 ResultSet tablesData = databaseMetaData.getTables(database.getName(), null, null, null);
                 
                 //Holds the list of all tables
-                List<Table> tables = new ArrayList<>();
+                ArrayList<Table> tables = new ArrayList<>();
                 
                 //Iterate over all tables in database
                 while (tablesData.next()) {
@@ -99,7 +99,7 @@ public class SGBD {
                         
                         cells = new ArrayList<>();
                         
-                        //Iterate of all cells in the row
+                        //Iterate over all cells in the row
                         for (int j = 1; j <= tableMetaData.getColumnCount(); j++) {
                             if (result.getObject(j) != null) {
                                 data = result.getObject(j).toString();
@@ -120,6 +120,7 @@ public class SGBD {
                     
                 }
                 
+                database.setTables(tables); 
                 databases.add(database);
                 
             }

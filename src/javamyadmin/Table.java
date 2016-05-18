@@ -41,4 +41,31 @@ public class Table {
         this.rows = rows;
     }
     
+    public String[] getHeaderAsArray() 
+    {
+        String[] headerArray = new String[header.size()];
+        return header.toArray(headerArray);
+    }
+    
+    public String[][] getRowsAsArray()
+    {
+        String[][] rowsArray = new String[rows.size()][];
+        
+        for (int i = 0; i < rows.size(); i++) {
+        
+            List<String> cells = rows.get(i);
+            String[] cellsArray = new String[cells.size()];
+            
+            for (int j = 0; j < cells.size(); j++) {
+                cellsArray[j] = cells.get(j);
+            }
+            
+            rowsArray[i] = cellsArray;
+            
+        }
+        
+        return rowsArray;
+        
+    }
+    
 }
