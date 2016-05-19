@@ -52,20 +52,13 @@ public class Table {
         String[][] rowsArray = new String[rows.size()][];
         
         for (int i = 0; i < rows.size(); i++) {
+            
+            String[] cellsArray = new String[rows.get(i).size()];
+            rowsArray[i] = rows.get(i).toArray(cellsArray);
         
-            List<String> cells = rows.get(i);
-            String[] cellsArray = new String[cells.size()];
-            
-            for (int j = 0; j < cells.size(); j++) {
-                cellsArray[j] = cells.get(j);
-            }
-            
-            rowsArray[i] = cellsArray;
-            
         }
         
         return rowsArray;
-        
     }
     
 }

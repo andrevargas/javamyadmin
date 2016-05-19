@@ -6,6 +6,7 @@
 package javamyadmin;
 
 import com.bethecoder.ascii_table.ASCIITable;
+import java.util.ArrayList;
 
 /**
  *
@@ -36,13 +37,15 @@ public class JavaMyAdmin {
 //        
 //        ASCIITable.getInstance().printTable(header, data);
 
-        String[] header = sgbd.getDatabases().get(0).getTables().get(0).getHeaderAsArray();
-        String[][] data = sgbd.getDatabases().get(0).getTables().get(0).getRowsAsArray();
+//        String[] header = sgbd.getDatabases().get(0).getTables().get(2).getHeaderAsArray();
+//        String[][] data = sgbd.getDatabases().get(0).getTables().get(2).getRowsAsArray();
+//        
+//        System.out.println("Connected on database " + sgbd.getDatabases().get(0).getName());
+//        System.out.println("Table: " + sgbd.getDatabases().get(0).getTables().get(2).getName());
         
-        System.out.println("Connected on database " + sgbd.getDatabases().get(0).getName());
-        System.out.println("Table: " + sgbd.getDatabases().get(0).getTables().get(0).getName());
+        InterfaceBuilder i = new InterfaceBuilder();
+        i.buildDatabaseSelectMenu(sgbd);
         
-        ASCIITable.getInstance().printTable(header, data);
         
     }
     
