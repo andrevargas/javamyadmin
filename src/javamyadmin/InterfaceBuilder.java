@@ -13,27 +13,27 @@ import java.util.ArrayList;
  */
 public class InterfaceBuilder {
     
-    public void buildMenu(String title, ArrayList<String> options) 
+    public void renderMenu(Menu menu) 
     {
         ConsoleWriter writer = new ConsoleWriter();
         
-        writer.write(title);
-        
-        for (String option : options) {
-            writer.write(option);
+        writer.write(menu.getTitle());
+        for (String option : menu.getOptions()) {
+            writer.write(menu.getOptions().indexOf(option) + 1 + ". " + option);
         }
         
     }
     
     public void buildDatabaseSelectMenu(SGBD sgbd)
     {
-        String title = "Selecione um banco de dados";
+        ArrayList<String> options = new ArrayList<>();
         
-        ArrayList<Database> databases = sgbd.getDatabases();
-        
-        for (Database database : databases) {
-            System.out.println(databases.indexOf(database));
+        for (Database database : sgbd.getDatabases()) {
+            options.add(database.getName());
         }
+        
+        Menu menu = new Menu("Selecione o banco de dados: ", options);
+        renderMenu(menu);
         
     }
     

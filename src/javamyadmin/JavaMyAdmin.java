@@ -6,7 +6,6 @@
 package javamyadmin;
 
 import com.bethecoder.ascii_table.ASCIITable;
-import java.util.ArrayList;
 
 /**
  *
