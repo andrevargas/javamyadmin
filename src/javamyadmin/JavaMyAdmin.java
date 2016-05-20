@@ -18,8 +18,8 @@ public class JavaMyAdmin {
      */
     public static void main(String[] args) {
         
-        SGBD sgbd = new SGBD();
-        sgbd.startService();
+        AppControler app = new AppControler();
+        app.start();
 
 //        String [] header = { "User Name", "Salary", "Designation", "Address", "Lucky#" };
 //        
@@ -41,9 +41,6 @@ public class JavaMyAdmin {
 //        
 //        System.out.println("Connected on database " + sgbd.getDatabases().get(0).getName());
 //        System.out.println("Table: " + sgbd.getDatabases().get(0).getTables().get(2).getName());
-        
-        InterfaceBuilder i = new InterfaceBuilder();
-        i.buildDatabaseSelectMenu(sgbd);
         
         
     }
