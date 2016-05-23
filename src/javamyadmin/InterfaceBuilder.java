@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class InterfaceBuilder {
     
-    private ConsoleWriter writer;
-    private ConsoleInputReader reader;
+    private final ConsoleWriter writer;
+    private final ConsoleInputReader reader;
 
     public InterfaceBuilder() 
     {
@@ -31,17 +31,11 @@ public class InterfaceBuilder {
         
     }
     
-    public void buildDatabaseList(SGBD sgbd)
+    public void renderDatabaseList(SGBD sgbd)
     {
-        ArrayList<String> options = new ArrayList<>();
-        
-        for (Database database : sgbd.getDatabases()) {
-            options.add(database.getName());
-        }
-        
-        Menu menu = new Menu("Selecione o banco de dados: ", options);
-        renderMenu(menu);
-        
+        String[] header = {"Bancos de dados"};
+        writer.write("\n", false);
+        writer.writeTable(header, sgbd.getDatabasesAsMatrix(), -1);
     }
     
     public void buildTableSelectMenu(Database database)
@@ -87,9 +81,19 @@ public class InterfaceBuilder {
                 + "\texit\n"
                 + "\t\tSair da aplicação\n"
                 + "\thelp\n"
-                + "\t\tReceber ajuda\n\n";
+                + "\t\tReceber ajuda\n";
                 
         writer.write(helpText);
+    }
+    
+    public void renderFoudDatabaseMessage(String text)
+    {
+        writer.write("Conectado ao banco '" + text + "'");
+    }
+    
+    public void renderNotFoundDatabaseMessage(String text)
+    {
+        writer.write("Banco de dados '" + text + "' não encontrado");
     }
     
 }

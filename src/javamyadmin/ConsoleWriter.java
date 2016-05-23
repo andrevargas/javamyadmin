@@ -34,4 +34,9 @@ public class ConsoleWriter {
         ASCIITable.getInstance().printTable(header, data);
     }
     
+    public void writeTable(String[] header, String[][] data, int dataAlign) 
+    {
+        ASCIITable.getInstance().printTable(header, data, dataAlign);
+    }
+    
 }

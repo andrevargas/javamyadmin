@@ -142,4 +142,27 @@ public class SGBD {
         return tables;
     }
     
+    public String[][] getDatabasesAsMatrix()
+    {
+        String[][] rows = new String[databases.size()][];
+        
+        for (int i = 0; i < databases.size(); i++) {
+            String[] cells = {databases.get(i).getName()};
+            rows[i] = cells;
+        }
+        
+        return rows;
+    }
+    
+    public Database findDatabaseByName(String search)
+    {
+        for (Database database : databases) {
+            if(database.getName().equals(search)){
+                return database;
+            }
+        }
+        
+        return null;
+    }
+    
 }

@@ -20,9 +20,9 @@ public class ConnectionFactory {
      */
     public static Connection getConnection()
     {
-        String url ="jdbc:mysql://localhost";
+        String url ="jdbc:mysql://localhost?zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=UTF-8&characterSetResults=UTF-8";
         String user = "root";
-        String password = "";
+        String password = "123";
         
         try {
             return DriverManager.getConnection(url, user, password);

@@ -18,6 +18,8 @@ public class AppControler {
      */
     private int status = 0;
     
+    private Database connectedDatabase;
+    
     public void start()
     {
         this.status = 1;
@@ -27,23 +29,39 @@ public class AppControler {
         
         InterfaceBuilder interfaceBuilder = new InterfaceBuilder();
         
+        interfaceBuilder.renderWelcomeScreen();
         
         while(this.status == 1){
             
-            interfaceBuilder.renderWelcomeScreen();
-            
             String command = interfaceBuilder.getInputData();
             
-            switch(command)
-            {
-                case "help":
-                    interfaceBuilder.renderHelpScreen();
-                    break;
-                case "lsdb":
-                    interfaceBuilder.buildDatabaseList(sgbd);
+            if (command.equals("help")) {
+                interfaceBuilder.renderHelpScreen();
             }
-            
-            this.status = 0;
+            else if (command.equals("lsdb")) {
+                interfaceBuilder.renderDatabaseList(sgbd); 
+            }
+            else if(command.contains("connect")){
+                
+                int begin = command.indexOf(" ") + 1;
+                int end = command.length();
+                String search = command.substring(begin, end);
+                
+                Database database = sgbd.findDatabaseByName(search);
+                
+                if (database != null) {
+                    this.connectedDatabase = database;
+                    interfaceBuilder.renderFoudDatabaseMessage(connectedDatabase.getName());
+                }
+                else{
+                    interfaceBuilder.renderNotFoundDatabaseMessage(search);
+                }
+                
+                
+            }
+            else if (command.equals("exit")) {
+                this.status = 0;
+            }
             
         }
         
