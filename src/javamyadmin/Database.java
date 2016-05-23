@@ -44,4 +44,15 @@ public class Database {
         return rows;
     }
     
+    public Table findTableByName(String search)
+    {
+        for (Table table : tables) {
+            if(table.getName().equals(search)){
+                return table;
+            }
+        }
+        
+        return null;
+    }
+    
 }

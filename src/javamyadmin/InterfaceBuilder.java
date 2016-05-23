@@ -5,8 +5,6 @@
  */
 package javamyadmin;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author andre
@@ -40,9 +38,13 @@ public class InterfaceBuilder {
     
     public void renderTableList(Database database)
     {
-        String[] header = {"Tabelas do banco '" + database.getName() + "'"};
+        String[] header = {"Tabelas do banco de dados '" + database.getName() + "'"};
         writer.write("\n", false);
         writer.writeTable(header, database.getTablesAsMatrix(), -1);
+    }
+    
+    public void renderTableData(Table table){
+        writer.writeTable(table.getHeaderAsArray(), table.getRowsAsArray());
     }
     
     public String getInputData() 
@@ -82,7 +84,7 @@ public class InterfaceBuilder {
     
     public void renderFoundDatabaseMessage(String text)
     {
-        writer.write("Conectado ao banco '" + text + "'\n");
+        writer.write("Conectado ao banco de dados '" + text + "'\n");
     }
     
     public void renderNotFoundDatabaseMessage(String text)
@@ -93,6 +95,21 @@ public class InterfaceBuilder {
     public void renderNotConnectedToDatabaseMessage() 
     {
         writer.write("Você não está conectado a nenhum banco de dados!\n");
+    }
+    
+    public void renderCommandNotFoundMessage(String text)
+    {
+        writer.write("Comando '" + text + "' não encontrado!\n");
+    }
+    
+    public void renderTableNotFoundMessage(String table, String database)
+    {
+        writer.write("Tabela '" + table + "' não encontrada no banco de dados '" + database + "'.\n");
+    }
+    
+    public void renderEmptyTableMessage() 
+    {
+        writer.write("Nenhum registro encontrado.\n");
     }
     
 }

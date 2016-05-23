@@ -5,6 +5,8 @@
  */
 package javamyadmin;
 
+import java.util.Arrays;
+
 /**
  *
  * @author andre
@@ -65,8 +67,38 @@ public class AppControler {
                     interfaceBuilder.renderNotConnectedToDatabaseMessage();
                 }
             }
+            else if (command.contains("show")) {
+                
+                int begin = command.indexOf(" ") + 1;
+                int end = command.length();
+                String search = command.substring(begin, end);
+                
+                if (connectedDatabase != null) {
+                 
+                    Table table = connectedDatabase.findTableByName(search);
+                    
+                    if (table != null) {
+                        if(table.getRows().isEmpty()){
+                            interfaceBuilder.renderEmptyTableMessage();
+                        }
+                        else{
+                            interfaceBuilder.renderTableData(table);
+                        }
+                    }
+                    else {
+                        interfaceBuilder.renderTableNotFoundMessage(search, connectedDatabase.getName());
+                    }
+                }
+                else {
+                    interfaceBuilder.renderNotConnectedToDatabaseMessage();
+                }
+                
+            }
             else if (command.equals("exit")) {
                 this.status = 0;
+            }
+            else {
+                interfaceBuilder.renderCommandNotFoundMessage(command);
             }
             
         }
