@@ -22,6 +22,7 @@ public class SGBD {
     private String name = "";
     private ArrayList<Database> databases = new ArrayList<>();
     private final Connection connection;
+    private String version = "";
 
     public SGBD() {
         connection = ConnectionFactory.getConnection();
@@ -59,6 +60,9 @@ public class SGBD {
     public void loadDatabases() throws SQLException
     {
         DatabaseMetaData databaseMetaData = connection.getMetaData();
+        
+        this.version = databaseMetaData.getDatabaseProductVersion();
+        
         ResultSet catalogs = databaseMetaData.getCatalogs();
         
         //Iterate over all databases in SGBD
@@ -163,6 +167,14 @@ public class SGBD {
         }
         
         return null;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
     
 }

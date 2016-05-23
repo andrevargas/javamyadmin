@@ -31,7 +31,7 @@ public class AppControler {
         
         InterfaceBuilder interfaceBuilder = new InterfaceBuilder();
         
-        interfaceBuilder.renderWelcomeScreen();
+        interfaceBuilder.renderWelcomeScreen(sgbd.getVersion());
         
         while(this.status == 1){
             

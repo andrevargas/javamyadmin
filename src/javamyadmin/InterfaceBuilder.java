@@ -20,15 +20,6 @@ public class InterfaceBuilder {
         this.reader = new ConsoleInputReader();
     }
     
-    public void renderMenu(Menu menu) 
-    {
-        writer.write(menu.getTitle());
-        for (String option : menu.getOptions()) {
-            writer.write(menu.getOptions().indexOf(option) + 1 + ". " + option);
-        }
-        
-    }
-    
     public void renderDatabaseList(SGBD sgbd)
     {
         String[] header = {"Bancos de dados"};
@@ -53,11 +44,12 @@ public class InterfaceBuilder {
         return reader.read();
     }
     
-    public void renderWelcomeScreen()
+    public void renderWelcomeScreen(String version)
     {
         String welcomeText = "Bem vindo ao JavaMyAdmin!\n"
                 + "Desenvolvido por: André L. Vargas e Cristiano Winter.\n"
-                + "Versão: 0..0.0.0.0..........1 pre-alpha\n\n"
+                + "Versão do programa: 0.1.0 pre-alpha\n"
+                + "Versão do servidor MySQL: " + version + "\n\n"
                 + "Digite 'help' para receber ajuda!\n";
         writer.write(welcomeText);
         
