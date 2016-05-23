@@ -32,5 +32,16 @@ public class Database {
         this.tables = tables;
     }
     
+    public String[][] getTablesAsMatrix()
+    {
+        String[][] rows = new String[tables.size()][];
+        
+        for (int i = 0; i < tables.size(); i++) {
+            String[] cells = {tables.get(i).getName()};
+            rows[i] = cells;
+        }
+        
+        return rows;
+    }
     
 }

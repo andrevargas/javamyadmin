@@ -51,13 +51,19 @@ public class AppControler {
                 
                 if (database != null) {
                     this.connectedDatabase = database;
-                    interfaceBuilder.renderFoudDatabaseMessage(connectedDatabase.getName());
+                    interfaceBuilder.renderFoundDatabaseMessage(connectedDatabase.getName());
                 }
                 else{
                     interfaceBuilder.renderNotFoundDatabaseMessage(search);
                 }
-                
-                
+            }
+            else if (command.equals("lstbl")) {
+                if (connectedDatabase != null) {
+                    interfaceBuilder.renderTableList(connectedDatabase);
+                }
+                else {
+                    interfaceBuilder.renderNotConnectedToDatabaseMessage();
+                }
             }
             else if (command.equals("exit")) {
                 this.status = 0;

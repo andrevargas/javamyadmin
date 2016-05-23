@@ -38,17 +38,11 @@ public class InterfaceBuilder {
         writer.writeTable(header, sgbd.getDatabasesAsMatrix(), -1);
     }
     
-    public void buildTableSelectMenu(Database database)
+    public void renderTableList(Database database)
     {
-        ArrayList<String> options = new ArrayList<>();
-        
-        for (Table table : database.getTables()) {
-            options.add(table.getName());
-        }
-        
-        Menu menu = new Menu("Selecione uma tabela: ", options);
-        renderMenu(menu);
-        
+        String[] header = {"Tabelas do banco '" + database.getName() + "'"};
+        writer.write("\n", false);
+        writer.writeTable(header, database.getTablesAsMatrix(), -1);
     }
     
     public String getInputData() 
@@ -86,14 +80,19 @@ public class InterfaceBuilder {
         writer.write(helpText);
     }
     
-    public void renderFoudDatabaseMessage(String text)
+    public void renderFoundDatabaseMessage(String text)
     {
-        writer.write("Conectado ao banco '" + text + "'");
+        writer.write("Conectado ao banco '" + text + "'\n");
     }
     
     public void renderNotFoundDatabaseMessage(String text)
     {
-        writer.write("Banco de dados '" + text + "' não encontrado");
+        writer.write("Banco de dados '" + text + "' não encontrado\n");
+    }
+    
+    public void renderNotConnectedToDatabaseMessage() 
+    {
+        writer.write("Você não está conectado a nenhum banco de dados!\n");
     }
     
 }
