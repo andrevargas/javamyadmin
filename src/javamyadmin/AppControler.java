@@ -39,7 +39,12 @@ public class AppControler {
                 interfaceBuilder.renderHelpScreen();
             }
             else if (command.equals("lsdb")) {
-                interfaceBuilder.renderDatabaseList(sgbd); 
+                if (sgbd.getDatabases().isEmpty()) {
+                    interfaceBuilder.renderEmptySGBDMessage();
+                }
+                else{
+                    interfaceBuilder.renderDatabaseList(sgbd);
+                }
             }
             else if(command.contains("connect")){
                 
@@ -59,7 +64,12 @@ public class AppControler {
             }
             else if (command.equals("lstbl")) {
                 if (connectedDatabase != null) {
-                    interfaceBuilder.renderTableList(connectedDatabase);
+                    if (connectedDatabase.getTables().isEmpty()) {
+                        interfaceBuilder.renderEmptyDatabaseMessage(connectedDatabase.getName());
+                    }
+                    else{
+                        interfaceBuilder.renderTableList(connectedDatabase);
+                    }
                 }
                 else {
                     interfaceBuilder.renderNotConnectedToDatabaseMessage();

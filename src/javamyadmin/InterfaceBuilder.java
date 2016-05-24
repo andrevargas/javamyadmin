@@ -48,7 +48,7 @@ public class InterfaceBuilder {
     {
         String welcomeText = "Bem vindo ao JavaMyAdmin!\n"
                 + "Desenvolvido por: André L. Vargas e Cristiano Winter.\n"
-                + "Versão do programa: 0.1.0 pre-alpha\n"
+                + "Versão do programa: 0.1.2 pre-alpha\n"
                 + "Versão do servidor MySQL: " + version + "\n\n"
                 + "Digite 'help' para receber ajuda!\n";
         writer.write(welcomeText);
@@ -99,9 +99,18 @@ public class InterfaceBuilder {
         writer.write("Tabela '" + table + "' não encontrada no banco de dados '" + database + "'.\n");
     }
     
+    public void renderEmptySGBDMessage()
+    {
+        writer.write("Não há nenhum banco de dados criado.\n");
+    }
+    
+    public void renderEmptyDatabaseMessage(String text) 
+    {
+        writer.write("Não há nenhuma tabela cadastrada no banco '" + text + "'.\n");
+    }
+    
     public void renderEmptyTableMessage() 
     {
         writer.write("Nenhum registro encontrado.\n");
     }
-    
 }
