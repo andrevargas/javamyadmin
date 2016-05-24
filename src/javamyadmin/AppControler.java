@@ -5,8 +5,6 @@
  */
 package javamyadmin;
 
-import java.util.Arrays;
-
 /**
  *
  * @author andre

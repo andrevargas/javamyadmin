@@ -21,9 +21,6 @@ public class ConnectionFactory {
      */
     public static Connection getConnection()
     {
-//        Esta url com parâmetros diferentes foi necessário para rodas sem exceções na minha máquina.
-//        Também foi necessário inserir comando "set @@global.show_compatibility_56=ON;" no MySQL.
-//        String url ="jdbc:mysql://localhost?zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=UTF-8&characterSetResults=UTF-8";
         String url = "jdbc:mysql://localhost";
         
         Properties properties = new Properties();
@@ -33,7 +30,7 @@ public class ConnectionFactory {
         try {
             return DriverManager.getConnection(url, properties);
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.err.println(ex.getMessage());
             return null;
         }
     }

@@ -57,7 +57,7 @@ public class SGBD {
         
     }
     
-    public void loadDatabases() throws SQLException
+    private void loadDatabases() throws SQLException
     {
         DatabaseMetaData databaseMetaData = connection.getMetaData();
         
@@ -82,7 +82,7 @@ public class SGBD {
         }
     }
     
-    public ArrayList<Table> loadTables(DatabaseMetaData databaseMetaData, String databaseName) throws SQLException
+    private ArrayList<Table> loadTables(DatabaseMetaData databaseMetaData, String databaseName) throws SQLException
     {
         //Get all tables in database
         ResultSet tablesData = databaseMetaData.getTables(databaseName, null, null, null);
