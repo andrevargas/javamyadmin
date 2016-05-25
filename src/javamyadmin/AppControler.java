@@ -19,7 +19,9 @@ public class AppControler {
         
         AppRuntime app = new AppRuntime();
         InterfaceBuilder interfaceBuilder = app.getInterfaceBuilder();
+        
         SGBD sgbd = app.getSgbd();
+        sgbd.startService();
         
         interfaceBuilder.renderWelcomeScreen(sgbd.getVersion());
         app.setStatus(1);
