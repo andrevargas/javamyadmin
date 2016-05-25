@@ -48,7 +48,7 @@ public class InterfaceBuilder {
     {
         String welcomeText = "Bem vindo ao JavaMyAdmin!\n"
                 + "Desenvolvido por: André L. Vargas e Cristiano Winter.\n"
-                + "Versão do programa: 0.1.2 pre-alpha\n"
+                + "Versão do programa: 0.1.3 pre-alpha\n"
                 + "Versão do servidor MySQL: " + version + "\n\n"
                 + "Digite 'help' para receber ajuda!\n";
         writer.write(welcomeText);
